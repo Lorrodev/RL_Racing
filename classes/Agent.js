@@ -90,15 +90,25 @@ class Agent{
 
     mutate(){
         //Randomly delete reactions
+        /*for(let r = 0; r < this.reactions.length; r++){
+            if(Math.random() > 0.75){
+                this.reactions.splice(r, 1);
+                r--;
+            }
+        }*/
+
+        //(Randomly) delete less important reactions
         for(let r = 0; r < this.reactions.length; r++){
-            if(Math.random > 0.5){
+            let reaction = this.reactions[r];
+
+            if(reaction.importance == 0 || (Math.random() > 0.5 && Math.random() > reaction.importance)){
                 this.reactions.splice(r, 1);
                 r--;
             }
         }
 
         //Randomly add reactions
-        generateRandomReactions(this, 0, 2);
+        generateRandomReactions(this, 0, 1);
 
         //Randomly adjust reactions
         for(let r = 0; r < this.reactions.length; r++){

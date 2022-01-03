@@ -88,10 +88,16 @@ class Car{
             }
             //---DEBUG
 
-            mainCtx.fillStyle = "#111";
+            if(this == generations[GLOBAL_currentGeneration].agents[0].car){
+                mainCtx.fillStyle = "#0F0";
+            }else{
+                mainCtx.fillStyle = "#111";
+            }
+            mainCtx.strokeStyle = "#111";
             mainCtx.beginPath();
             mainCtx.arc(this.position.x, this.position.y, 15, 0, Math.PI*2);
             mainCtx.fill();
+            mainCtx.stroke();
         }
     }
 }

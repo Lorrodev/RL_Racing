@@ -19,11 +19,11 @@ function generateRandomReactions(agent, min, max){
     for(let i = 0; i < Math.round(Math.random() * (max - min) + min); i++){
         let inputIndex = Math.floor(Math.random() * INPUT_LENGTH);
         let inValue = Math.random();
-        let toleracne = Math.random();
+        let tolerance = Math.random();
         let outputIndex = Math.floor(Math.random() * OUTPUT_LENGTH);
         let outValue = Math.random() * 2 - 1;
 
-        agent.reactions.push(new Reaction(inputIndex, inValue, toleracne, outputIndex, outValue));
+        agent.reactions.push(new Reaction(inputIndex, inValue, tolerance, outputIndex, outValue));
     }
 }
 //---REACTIONS

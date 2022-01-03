@@ -1,4 +1,4 @@
-const POPULATION_SIZE = 10;
+const POPULATION_SIZE = 20;
 
 const MAX_GENERATION_STEPS = 400;
 
@@ -23,20 +23,20 @@ class Generation{
     }
 
     populateWithMutation(agent, numMutations){
+        //Add best agent from last generation
+        this.agents.push(agent.clone());
+
         for(let m = 0; m < numMutations - 1; m++){
             let clone = agent.clone();
             clone.mutate();
             this.agents.push(clone);
         }
-
-        //Add best agent from last generation
-        this.agents.push(agent.clone());
     }
 
     removeStandingAgents(){
         for(let a = 0; a < this.agents.length; a++){
             let agent = this.agents[a];
-            if(agent.car.distanceTraveled == 0){
+            if(agent.car.distanceTraveled < 20){
                 agent.car.die();
             }
         }

@@ -90,11 +90,22 @@ function nextFrame(){
 
     mainCtx.fillStyle = "#FFF";
     mainCtx.font = "30px Consolas";
+
+    //Current Gen
     mainCtx.fillText("GEN: "+GLOBAL_currentGeneration, 20, 40);
+    //Step count
+    mainCtx.fillText("STP: "+generations[GLOBAL_currentGeneration].steps+"/"+MAX_GENERATION_STEPS, 20, 80);
     if(GLOBAL_currentGeneration > 1){
-        mainCtx.fillText("BST: "+Math.round(generations[GLOBAL_currentGeneration-1].bestAgent.points), 20, 80);
-        let delta = Math.round(generations[GLOBAL_currentGeneration-1].bestAgent.points)-Math.round(generations[GLOBAL_currentGeneration-2].bestAgent.points)
-        mainCtx.fillText("DLT: "+delta, 20, 120);
+        //Best score
+        mainCtx.fillText("BST: "+Math.round(generations[GLOBAL_currentGeneration-1].bestAgent.points), 20, 120);
+
+        //Delta
+        let delta = Math.round(generations[GLOBAL_currentGeneration-1].bestAgent.points)-Math.round(generations[GLOBAL_currentGeneration-2].bestAgent.points);
+        if(delta != 0){
+            mainCtx.fillStyle = "#0F0";
+        }
+        mainCtx.fillText("DLT: "+delta, 20, 160);
+        mainCtx.fillStyle = "#FFF";
     }
 
     //+++DEBUG
