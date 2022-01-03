@@ -74,8 +74,8 @@ class Agent{
         steering = steering > 1 ? 1 : steering;
         steering = steering < -1 ? -1 : steering;
 
-        this.car.steer(acceleration);
-        this.car.accelerate(steering);
+        this.car.steer(steering);
+        this.car.accelerate(acceleration);
     }
 
     clone(){
